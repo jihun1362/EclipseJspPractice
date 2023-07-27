@@ -1,7 +1,6 @@
 # EclipseJspPractice
 
 -이클립스 사용
-
 -jsp, jstl 사용
 -Mybatis 적용
 -간단 게시글 CRUD
