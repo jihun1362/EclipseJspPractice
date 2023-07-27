@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.my.testMapper">
+
+	<select id="count" resultType="java.lang.Integer">
+		select count(*) from tb_test
+	</select>
+
+	<select id="test" resultType="TestBeanAlias">
+		select * from tb_test limit ${page},${size}
+	</select>
+
+	<select id="detailTest" resultType="TestBeanAlias">
+		select * from tb_test
+		WHERE id
+		= #{id}
+	</select>
+
+	<insert id="insertTest">
+		INSERT INTO tb_test (title, content, writer, wdate,
+		route, img)
+		VALUES(#{title}, #{content}, #{writer}, now(), #{route}, #{img})
+	</insert>
+
+	<update id="updateTest">
+		UPDATE tb_test
+		SET title =#{title}, #{content}, #{route}
+		WHERE id = #{id}
+	</update>
+
+
+	<delete id="deleteTest">
+		DELETE FROM tb_test WHERE id = #{id}
+	</delete>
+
+	<insert id="signupTest">
+		INSERT INTO member (email, password, name)
+		VALUES(#{email}, #{password}, #{name})
+	</insert>
+
+	<select id="loginTest" resultType="MemberDto">
+		select * from member
+		WHERE
+		email = #{email} and password = #{password}
+	</select>
+
+	<select id="checkTest" resultType="MemberDto">
+		select * from member
+		WHERE
+		email = #{email}
+	</select>
+</mapper>
